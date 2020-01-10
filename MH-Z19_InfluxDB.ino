@@ -79,6 +79,9 @@ void setup()
   Serial.println();
   Serial.print("Waiting for WiFi... ");
   while (WiFi.status() != WL_CONNECTED) {
+#ifdef ARDUINO_ARCH_ESP32
+    WiFi.begin(WiFi_SSID, WiFi_Password);
+#endif
     Serial.println(".");
     delay(500);
   }
