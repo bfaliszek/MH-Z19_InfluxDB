@@ -120,22 +120,6 @@ void setup()
 {
   Serial.begin(115000);                                    // Device to serial monitor feedback
 
-  WiFi.begin(WiFi_SSID, WiFi_Password);
-  Serial.println();
-  Serial.print("Waiting for WiFi... ");
-  while (WiFi.status() != WL_CONNECTED) {
-#ifdef ARDUINO_ARCH_ESP32
-    WiFi.begin(WiFi_SSID, WiFi_Password);
-#endif
-    Serial.println(".");
-    delay(500);
-  }
-  Serial.println("WiFi connected");
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-
-  influx.setDbAuth(INFLUXDB_DATABASE, INFLUXDB_USER, INFLUXDB_PASS);
-
 #ifdef ARDUINO_ARCH_ESP32
   disableCore0WDT();
   //disableCore1WDT(); // ESP32-solo-1 so only CORE0!
@@ -155,6 +139,23 @@ void setup()
   Serial.print("Auto Base Calibration(ABC) Status: "); myMHZ19.getABC() ? Serial.println("ON") :  Serial.println("OFF");
 
   take_measurements();
+
+  WiFi.begin(WiFi_SSID, WiFi_Password);
+  Serial.println();
+  Serial.print("Waiting for WiFi... ");
+  while (WiFi.status() != WL_CONNECTED) {
+#ifdef ARDUINO_ARCH_ESP32
+    WiFi.begin(WiFi_SSID, WiFi_Password);
+#endif
+    Serial.println(".");
+    delay(500);
+  }
+  Serial.println("WiFi connected");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  influx.setDbAuth(INFLUXDB_DATABASE, INFLUXDB_USER, INFLUXDB_PASS);
+
 }
 
 void loop()
