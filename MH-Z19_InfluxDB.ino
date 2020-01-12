@@ -12,8 +12,8 @@ int SEND_DATA_EVERY_SECONDS = 60; // default 60 sec
 #define DEVICE_NAME "XXX"
 
 // WiFi Config
-#define WiFi_SSID "Bambrony"
-#define WiFi_Password "QJ3-cfV@yTG4zaQ"
+#define WiFi_SSID "SSID"
+#define WiFi_Password "PASSWORD"
 
 #define MHZ19_AUTOCALIBRATION_ON // Turn ON or OFF(just delete or comment this line)
 
