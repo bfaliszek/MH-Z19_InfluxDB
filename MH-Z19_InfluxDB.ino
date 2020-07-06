@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "src/MHZ19.h"                                  // https://github.com/WifWaf/MH-Z19 // updated - 10.01.2020
+#include "src/MHZ19.h"                                  // https://github.com/WifWaf/MH-Z19 // updated - 6.07.2020
 #include "src/InfluxDb.h"                               // https://github.com/tobiasschuerg/ESP8266_Influx_DB // updated - 10.01.2020
 
 int READ_DATA_EVERY_SECONDS = 20; // default 20 sec
