@@ -57,11 +57,15 @@ void take_measurements() {
   ppm = myMHZ19.getCO2();                             // Request CO2 (as ppm)
   TemperatureC = myMHZ19.getTemperature();              // Request Temperature (as Celsius)
 
-  if (ppm < 100 || ppm > 6000) {
-    Serial.println("PPM not valid");
-  } else {
-    Serial.println("CO2: " + String(ppm) + " ppm");
+
+  if (ppm < 400) {
+    ppm = 400;
   }
+  if (ppm > 5000) {
+    ppm = 5000;
+  }
+
+  Serial.println("CO2: " + String(ppm) + " ppm");
   Serial.println("Temperature: " + String(TemperatureC) + " C");
 }
 
@@ -136,7 +140,7 @@ void setup()
   //myMHZ19.autoCalibration(false);                          // Turn auto calibration OFF
 #endif
 
-  Serial.print("Auto Base Calibration(ABC) Status: "); myMHZ19.getABC() ? Serial.println("ON") :  Serial.println("OFF");
+  Serial.print("\nAuto Base Calibration(ABC) Status: "); myMHZ19.getABC() ? Serial.println("ON") :  Serial.println("OFF");
 
   take_measurements();
 
